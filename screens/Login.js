@@ -3,6 +3,12 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import { Input, Button } from "galio-framework";
 
 export default class Login extends React.Component {
+  static navigationOptions = {
+    headerShown: false
+  };
+  handleLogin = () => {
+    this.props.navigation.navigate("Map");
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -22,7 +28,7 @@ export default class Login extends React.Component {
           iconColor="black"
         />
         <Input style={styles.input} placeholder="password" password viewPass />
-        <Button style={styles.button} color="info">
+        <Button color="info" style={styles.button} onPress={this.handleLogin}>
           Login
         </Button>
       </View>
@@ -43,7 +49,8 @@ const styles = StyleSheet.create({
     width: "91%"
   },
   button: {
-    marginTop: "5%"
+    marginTop: "5%",
+    width: "91%"
   },
   heading: {
     flexDirection: "column",

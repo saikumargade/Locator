@@ -27,7 +27,10 @@ const locations = [
     }
   }
 ];
-export default class Map extends React.Component {
+export default class Maps extends React.Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   render() {
     return (
       <View style={styles.container}>
