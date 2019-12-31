@@ -1,49 +1,28 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-const locations = [
-  {
-    title: "title0",
-    description: "description0",
-    coordinates: {
-      latitude: 37.78825,
-      longitude: -122.4324
-    }
-  },
-  {
-    title: "title1",
-    description: "description1",
-    coordinates: {
-      latitude: 37.77825,
-      longitude: -122.4224
-    }
-  },
-  {
-    title: "title2",
-    description: "description2",
-    coordinates: {
-      latitude: 37.77825,
-      longitude: -122.4524
-    }
-  }
-];
-export default class Maps extends React.Component {
+import { connect } from "react-redux";
+
+class Maps extends React.Component {
   static navigationOptions = {
     headerShown: false
   };
   render() {
+    // console.log("map_props", this.props.user);
+    const { user } = this.props;
+    console.log(user);
     return (
       <View style={styles.container}>
         <MapView
           style={styles.map}
           region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: user.location.lat,
+            longitude: user.location.long,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
         >
-          {locations.map((l, i) => {
+          {/* {locations.map((l, i) => {
             return (
               <Marker
                 key={i}
@@ -52,12 +31,28 @@ export default class Maps extends React.Component {
                 description={l.description}
               />
             );
-          })}
+          })} */}
+          <Marker
+            coordinate={{
+              latitude: user.location.lat,
+              longitude: user.location.long
+            }}
+            title="title"
+            description="description"
+          />
         </MapView>
       </View>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(Maps);
 
 const styles = StyleSheet.create({
   container: {

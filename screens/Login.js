@@ -1,13 +1,40 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Alert } from "react-native";
 import { Input, Button } from "galio-framework";
+import usersinfo from "../usersinfo";
+import logaction from "../actions/logaction";
+import { connect } from "react-redux";
 
-export default class Login extends React.Component {
+class Login extends React.Component {
+  state = {
+    email_id: "",
+    password: ""
+  };
   static navigationOptions = {
     headerShown: false
   };
+  handleEmail = text => {
+    this.setState({ email_id: text });
+    // console.log(this.state.email_id);
+  };
+  handlePassword = text => {
+    this.setState({ password: text });
+    // console.log(this.state.password);
+  };
   handleLogin = () => {
-    this.props.navigation.navigate("Map");
+    const { email_id, password } = this.state;
+    const result = usersinfo.find(
+      u => u.email_id === email_id && u.password === password
+    );
+    if (result) {
+      // console.log(this.props);
+      this.props.logaction(result);
+      this.props.navigation.navigate("Map");
+      this.setState({ email_id: "", password: "" });
+    } else {
+      Alert.alert("please enter valid email and password");
+      this.setState({ email_id: "", password: "" });
+    }
   };
   render() {
     return (
@@ -20,14 +47,23 @@ export default class Login extends React.Component {
         </View>
         <Input
           style={styles.input}
+          value={this.state.email_id}
           placeholder="email_id"
           right
           icon="user"
           family="antdesign"
           iconSize={18}
           iconColor="black"
+          onChangeText={text => this.handleEmail(text)}
         />
-        <Input style={styles.input} placeholder="password" password viewPass />
+        <Input
+          style={styles.input}
+          value={this.state.password}
+          placeholder="password"
+          password
+          viewPass
+          onChangeText={text => this.handlePassword(text)}
+        />
         <Button color="info" style={styles.button} onPress={this.handleLogin}>
           Login
         </Button>
@@ -35,6 +71,8 @@ export default class Login extends React.Component {
     );
   }
 }
+
+export default connect(null, { logaction })(Login);
 
 const styles = StyleSheet.create({
   container: {

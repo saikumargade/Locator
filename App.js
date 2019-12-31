@@ -4,6 +4,11 @@ import Login from "./screens/Login";
 import Maps from "./screens/Map";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import logreducer from "./reducers/logreducer";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+const store = createStore(logreducer);
 
 const AppNavigator = createStackNavigator({
   Login: Login,
@@ -13,7 +18,11 @@ const Container = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   render() {
-    return <Container />;
+    return (
+      <Provider store={store}>
+        <Container />
+      </Provider>
+    );
   }
 }
 

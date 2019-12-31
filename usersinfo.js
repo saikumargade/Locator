@@ -18,12 +18,12 @@ export default usersinfo = [
     }
   },
   {
-    email_id: "sample3@example.com",
-    password: "samexam3",
+    email_id: "1",
+    password: "1",
     is_admin: false,
     location: {
-      lat: 37.77825,
-      long: -122.4524
+      lat: 17.3921,
+      long: 78.3195
     }
   },
   {
