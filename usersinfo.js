@@ -2,7 +2,7 @@ export default usersinfo = [
   {
     email_id: "sample1@example.com",
     password: "samexam1",
-    is_admin: true,
+    is_admin: false,
     location: {
       lat: 37.78825,
       long: -122.4324
@@ -20,7 +20,7 @@ export default usersinfo = [
   {
     email_id: "1",
     password: "1",
-    is_admin: false,
+    is_admin: true,
     location: {
       lat: 17.3921,
       long: 78.3195

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { connect } from "react-redux";
+import { Button } from "galio-framework";
 
 class Maps extends React.Component {
   static navigationOptions = {
@@ -39,8 +40,14 @@ class Maps extends React.Component {
             }}
             title="title"
             description="description"
+            pinColor="#0000ff"
           />
         </MapView>
+        {user.is_admin ? (
+          <Button round size="small" color="green" style={styles.button}>
+            Add People
+          </Button>
+        ) : null}
       </View>
     );
   }
@@ -62,5 +69,10 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject
+  },
+  button: {
+    marginBottom: 25,
+    shadowColor: "black",
+    width: "30%"
   }
 });

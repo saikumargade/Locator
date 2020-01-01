@@ -15,7 +15,6 @@ const AppNavigator = createStackNavigator({
   Map: Maps
 });
 const Container = createAppContainer(AppNavigator);
-
 export default class App extends React.Component {
   render() {
     return (
