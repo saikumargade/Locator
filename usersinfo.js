@@ -1,25 +1,7 @@
 export default usersinfo = [
   {
-    email_id: "sample1@example.com",
-    password: "samexam1",
-    is_admin: false,
-    location: {
-      lat: 37.78825,
-      long: -122.4324
-    }
-  },
-  {
-    email_id: "sample2@example.com",
-    password: "samexam2",
-    is_admin: false,
-    location: {
-      lat: 47.77825,
-      long: -112.4224
-    }
-  },
-  {
-    email_id: "1",
-    password: "1",
+    email_id: "user1@eg.com",
+    password: "pswd1",
     is_admin: true,
     location: {
       lat: 17.4447,
@@ -27,21 +9,84 @@ export default usersinfo = [
     }
   },
   {
-    email_id: "sample4@example.com",
-    password: "samexam4",
+    email_id: "user2@eg.com",
+    password: "pswd2",
     is_admin: false,
     location: {
-      lat: 57.76825,
-      long: -102.4024
+      lat: 17.4557,
+      long: 78.3622
     }
   },
   {
-    email_id: "sample5@example.com",
-    password: "samexam5",
+    email_id: "user3@eg.com",
+    password: "pswd3",
     is_admin: false,
     location: {
-      lat: 67.70825,
-      long: -162.4924
+      lat: 17.4557,
+      long: 78.3622
+    }
+  },
+  {
+    email_id: "user4@eg.com",
+    password: "pswd4",
+    is_admin: false,
+    location: {
+      lat: 17.4557,
+      long: 78.3622
+    }
+  },
+  {
+    email_id: "user5@eg.com",
+    password: "pswd5",
+    is_admin: false,
+    location: {
+      lat: 17.4327,
+      long: 78.3622
+    }
+  },
+  {
+    email_id: "user6@eg.com",
+    password: "pswd6",
+    is_admin: false,
+    location: {
+      lat: 17.4327,
+      long: 78.3622
+    }
+  },
+  {
+    email_id: "user7@eg.com",
+    password: "pswd7",
+    is_admin: false,
+    location: {
+      lat: 17.4327,
+      long: 78.3622
+    }
+  },
+  {
+    email_id: "user8@eg.com",
+    password: "pswd8",
+    is_admin: false,
+    location: {
+      lat: 17.4127,
+      long: 78.3422
+    }
+  },
+  {
+    email_id: "user9@eg.com",
+    password: "pswd9",
+    is_admin: false,
+    location: {
+      lat: 17.4127,
+      long: 78.3422
+    }
+  },
+  {
+    email_id: "user10@eg.com",
+    password: "pswd10",
+    is_admin: false,
+    location: {
+      lat: 17.4127,
+      long: 78.3422
     }
   }
 ];

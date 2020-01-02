@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
 import { connect } from "react-redux";
 import { Button } from "galio-framework";
 import usersinfo from "../usersinfo";
@@ -23,13 +23,25 @@ class Maps extends React.Component {
     // console.log("map_props", this.props.user);
     const { user, added } = this.props;
     // console.log(user);
+    if (added !== undefined) {
+      var list = usersinfo.filter(e => {
+        return (
+          e.location.lat === added.location.lat &&
+          e.location.long === added.location.long
+        );
+      });
+      // console.log(list);
+      var mails = list.map(e => e.email_id).join("\n");
+    }
     return (
       <View style={styles.container}>
         <MapView
           style={styles.map}
           region={{
-            latitude: user.location.lat,
-            longitude: user.location.long,
+            latitude:
+              added === undefined ? user.location.lat : added.location.lat,
+            longitude:
+              added === undefined ? user.location.long : added.location.long,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
@@ -49,9 +61,13 @@ class Maps extends React.Component {
                 latitude: added.location.lat,
                 longitude: added.location.long
               }}
-              title="add title"
-              description="add description"
-            />
+              // title="add title"
+              // description={list}
+            >
+              <Callout>
+                <Text>{mails}</Text>
+              </Callout>
+            </Marker>
           ) : null}
         </MapView>
         {user.is_admin ? (
