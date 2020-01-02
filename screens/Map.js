@@ -3,15 +3,26 @@ import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { connect } from "react-redux";
 import { Button } from "galio-framework";
+import usersinfo from "../usersinfo";
+import addaction from "../actions/addaction";
 
 class Maps extends React.Component {
   static navigationOptions = {
     headerShown: false
   };
+  handleAdd = () => {
+    const remaining = usersinfo.filter(
+      u => u.email_id !== this.props.user.email_id
+    );
+    // console.log(remaining);
+    const to_add = remaining[Math.floor(Math.random() * remaining.length)];
+    // console.log(to_add);
+    this.props.addaction(to_add);
+  };
   render() {
     // console.log("map_props", this.props.user);
-    const { user } = this.props;
-    console.log(user);
+    const { user, added } = this.props;
+    // console.log(user);
     return (
       <View style={styles.container}>
         <MapView
@@ -23,16 +34,6 @@ class Maps extends React.Component {
             longitudeDelta: 0.0421
           }}
         >
-          {/* {locations.map((l, i) => {
-            return (
-              <Marker
-                key={i}
-                coordinate={l.coordinates}
-                title={l.title}
-                description={l.description}
-              />
-            );
-          })} */}
           <Marker
             coordinate={{
               latitude: user.location.lat,
@@ -42,9 +43,25 @@ class Maps extends React.Component {
             description="description"
             pinColor="#0000ff"
           />
+          {added !== undefined ? (
+            <Marker
+              coordinate={{
+                latitude: added.location.lat,
+                longitude: added.location.long
+              }}
+              title="add title"
+              description="add description"
+            />
+          ) : null}
         </MapView>
         {user.is_admin ? (
-          <Button round size="small" color="green" style={styles.button}>
+          <Button
+            round
+            size="small"
+            color="green"
+            style={styles.button}
+            onPress={this.handleAdd}
+          >
             Add People
           </Button>
         ) : null}
@@ -55,11 +72,12 @@ class Maps extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.logreducer.user,
+    added: state.addreducer.added
   };
 };
 
-export default connect(mapStateToProps)(Maps);
+export default connect(mapStateToProps, { addaction })(Maps);
 
 const styles = StyleSheet.create({
   container: {

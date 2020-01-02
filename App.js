@@ -4,11 +4,11 @@ import Login from "./screens/Login";
 import Maps from "./screens/Map";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import logreducer from "./reducers/logreducer";
+import reducers from "./reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-const store = createStore(logreducer);
+const store = createStore(reducers);
 
 const AppNavigator = createStackNavigator({
   Login: Login,

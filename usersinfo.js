@@ -13,8 +13,8 @@ export default usersinfo = [
     password: "samexam2",
     is_admin: false,
     location: {
-      lat: 37.77825,
-      long: -122.4224
+      lat: 47.77825,
+      long: -112.4224
     }
   },
   {
@@ -22,8 +22,8 @@ export default usersinfo = [
     password: "1",
     is_admin: true,
     location: {
-      lat: 17.3921,
-      long: 78.3195
+      lat: 17.4447,
+      long: 78.3622
     }
   },
   {
@@ -31,8 +31,8 @@ export default usersinfo = [
     password: "samexam4",
     is_admin: false,
     location: {
-      lat: 37.76825,
-      long: -122.4024
+      lat: 57.76825,
+      long: -102.4024
     }
   },
   {
@@ -40,8 +40,8 @@ export default usersinfo = [
     password: "samexam5",
     is_admin: false,
     location: {
-      lat: 37.70825,
-      long: -122.4924
+      lat: 67.70825,
+      long: -162.4924
     }
   }
 ];
