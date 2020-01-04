@@ -2,15 +2,15 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Login from "./screens/Login";
 import Maps from "./screens/Map";
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+// import { createStackNavigator } from "react-navigation-stack";
 import reducers from "./reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 const store = createStore(reducers);
 
-const AppNavigator = createStackNavigator({
+const AppNavigator = createSwitchNavigator({
   Login: Login,
   Map: Maps
 });
