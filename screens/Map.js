@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, Alert, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  ActivityIndicator,
+  Image
+} from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { connect } from "react-redux";
 import { Button } from "galio-framework";
@@ -83,6 +90,7 @@ class Maps extends React.Component {
       <View style={styles.container}>
         <MapView
           style={styles.map}
+          showsUserLocation={true}
           region={{
             latitude:
               added === undefined ? location.latitude : added.location.lat,
@@ -100,17 +108,48 @@ class Maps extends React.Component {
             title="title"
             description="description"
             pinColor="#0000ff"
-          />
+          >
+            <View>
+              <Image
+                source={require("../Images/MapMarker.png")}
+                style={{ width: 23, height: 40 }}
+              />
+            </View>
+          </Marker>
           {added !== undefined ? (
             <Marker
               coordinate={{
                 latitude: added.location.lat,
                 longitude: added.location.long
               }}
+              // icon={require("../Images/MapMarker.png")}
               // title="add title"
               // description={list}
             >
-              <Callout>
+              <View>
+                <Text
+                  style={{
+                    backgroundColor: "blue",
+                    height: 17,
+                    width: 17,
+                    borderRadius: 70,
+                    paddingLeft: 4.5,
+                    borderBottomWidth: -2.5,
+                    marginLeft: 12,
+                    zIndex: 100,
+                    color: "white",
+                    position: "relative",
+                    marginBottom: -7
+                  }}
+                >
+                  {list.length}
+                </Text>
+                <Image
+                  source={require("../Images/MapMarker.png")}
+                  style={{ width: 23, height: 40 }}
+                />
+              </View>
+              <Callout style={{ width: 105, height: 55 }}>
                 <Text>{mails}</Text>
               </Callout>
             </Marker>

@@ -9,8 +9,8 @@ export default usersinfo = [
     }
   },
   {
-    email_id: "user2@eg.com",
-    password: "pwd2",
+    email_id: "2",
+    password: "2",
     is_admin: false,
     location: {
       lat: 17.4557,
@@ -40,7 +40,7 @@ export default usersinfo = [
     password: "pwd5",
     is_admin: false,
     location: {
-      lat: 17.4327,
+      lat: 17.4127,
       long: 78.3622
     }
   },
@@ -49,7 +49,7 @@ export default usersinfo = [
     password: "pwd6",
     is_admin: false,
     location: {
-      lat: 17.4327,
+      lat: 17.4127,
       long: 78.3622
     }
   },
@@ -58,7 +58,7 @@ export default usersinfo = [
     password: "pwd7",
     is_admin: false,
     location: {
-      lat: 17.4327,
+      lat: 17.4127,
       long: 78.3622
     }
   },
