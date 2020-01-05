@@ -100,7 +100,8 @@ class Maps extends React.Component {
             longitudeDelta: 0.0421
           }}
         >
-          <Marker
+          {/*below marker can be used if we want to mark current location */}
+          {/* <Marker
             coordinate={{
               latitude: location.latitude,
               longitude: location.longitude
@@ -115,7 +116,7 @@ class Maps extends React.Component {
                 style={{ width: 23, height: 40 }}
               />
             </View>
-          </Marker>
+          </Marker> */}
           {added !== undefined ? (
             <Marker
               coordinate={{
